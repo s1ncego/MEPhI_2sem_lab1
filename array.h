@@ -2,37 +2,29 @@
 #define LAB1BUNTSEV_ARRAY_H
 
 #include <string.h>
-#include <stdlib.h>
-#include "number.h"
+#include "fieldinfo.h"
 
 /*
  * Заголовочный файл для работы с массивами
  */
 
-typedef void (*PrintArrayElement)(const void *el);
-
-typedef int (*SortArrayElement)(void *elem1, void *elem2);
-
 typedef struct {
     char name[20];
     void *data;
     size_t size;
-    size_t elemSize;
-    PrintArrayElement printElement;
-    SortArrayElement sortElement;
+    FieldInfo fieldinfo;
+//    size_t elemSize;
+//    PrintArrayElement printElement;
+//    SortArrayElement sortElement;
 } Array;
-
-/*typedef struct {
-    char name[20];
-    Array array;
-} NamedArray;*/
 
 typedef struct {
     Array *arrays;
     size_t size;
 } ArrayCollection;
 
-void arrayInit(Array *m, size_t elemSize, PrintArrayElement printElement);
+//void arrayInit(Array *m, size_t elemSize, PrintArrayElement printElement);
+void arrayInit(Array *m, FieldInfo *GetElem);
 
 void arrayPushBack(Array *m, const void *elem);
 
@@ -40,7 +32,8 @@ void arrayFree(Array *m);
 
 void arrayPrintElements(const Array *m);
 
-void arrayAddToCollection(ArrayCollection *collection, const char *name, size_t elemSize, PrintArrayElement printElem);
+//void arrayAddToCollection(ArrayCollection *collection, const char *name);
+void arrayAddToCollection(ArrayCollection *collection, const char *name, FieldInfo *GetField);
 
 Array *arrayFindInCollection(ArrayCollection *collection, const char *name);
 

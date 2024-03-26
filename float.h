@@ -9,8 +9,6 @@
 
 void floatPrint(const void *elem);
 
-void floatSwap(const void *a, const void *b, const void *help);
-
 int floatSort(void* element1, void* element2);
 
 #endif

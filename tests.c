@@ -10,7 +10,7 @@ int testCreateFindLogic() {
     ArrayCollection collection = {NULL, 0};
 
     // Create new int or float array
-    arrayAddToCollection(&collection, "test1", sizeof(int) /*sizeof(float)*/, numberPrint /*floatPrint*/);
+    arrayAddToCollection(&collection, "test1", GetIntFieldInfo() /*GetFloatFieldInfo()*/);
     if (collection.size != 1) {
         printf("\narrayAddToCollection does not work!\n");
         ErrorCode = -1;
@@ -35,7 +35,7 @@ int testCreateFindLogic() {
 int testPushBackLogic() {
     int ErrorCode = 0;
     ArrayCollection collection = {NULL, 0};
-    arrayAddToCollection(&collection, "test2", sizeof(int), numberPrint);
+    arrayAddToCollection(&collection, "test2", GetIntFieldInfo());
     Array *arr1 = arrayFindInCollection(&collection, "test2");
 
     void *elem1;
@@ -58,8 +58,8 @@ int testConcatenationLogic() {
     int ErrorCode = 0;
     ArrayCollection collection = {NULL, 0};
 
-    arrayAddToCollection(&collection, "test3.1", sizeof(int), numberPrint);
-    arrayAddToCollection(&collection, "test3.2", sizeof(int), numberPrint);
+    arrayAddToCollection(&collection, "test3.1", GetIntFieldInfo());
+    arrayAddToCollection(&collection, "test3.2", GetIntFieldInfo());
     Array *firstarr = arrayFindInCollection(&collection, "test3.1");
     Array *secondarr = arrayFindInCollection(&collection, "test3.2");
 
@@ -67,7 +67,7 @@ int testConcatenationLogic() {
     arrayPushBack(firstarr, &elem1);
     arrayPushBack(secondarr, &elem2);
 
-    arrayAddToCollection(&collection, "res", sizeof(int), numberPrint);
+    arrayAddToCollection(&collection, "res", GetIntFieldInfo());
     Array *resultarr = arrayFindInCollection(&collection, "res");
 
     arrayConcatenation(resultarr, firstarr, secondarr);
@@ -88,7 +88,7 @@ int testConcatenationLogic() {
 int testMapLogic() {
     int ErrorCode = 0;
     ArrayCollection collection = {NULL, 0};
-    arrayAddToCollection(&collection, "test4", sizeof(int), numberPrint);
+    arrayAddToCollection(&collection, "test4", GetIntFieldInfo());
     Array *array = arrayFindInCollection(&collection, "test4");
 
     int elem = 1;
@@ -114,9 +114,9 @@ int testWhereLogic(){
     int ErrorCode = 0;
     ArrayCollection collection = {NULL, 0};
 
-    arrayAddToCollection(&collection, "test5", sizeof(int), numberPrint);
+    arrayAddToCollection(&collection, "test5", GetIntFieldInfo());
     Array *arrWhere = arrayFindInCollection(&collection, "test5");
-    arrayAddToCollection(&collection, "res", sizeof(int), numberPrint);
+    arrayAddToCollection(&collection, "res", GetIntFieldInfo());
     Array *arrResult = arrayFindInCollection(&collection, "res");
 
     //arrayWhere(funcWhere, arrWhere, arrResult);
@@ -138,7 +138,7 @@ int testSortLogic(){
     int ErrorCode = 0;
     ArrayCollection collection = {NULL, 0};
 
-    arrayAddToCollection(&collection, "res", sizeof(int), numberPrint);
+    arrayAddToCollection(&collection, "res", GetIntFieldInfo());
     Array *arrSort = arrayFindInCollection(&collection, "res");
 
     size_t sz = arrSort->size;

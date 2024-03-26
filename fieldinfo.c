@@ -4,10 +4,6 @@
  * Работа с fieldinfo
  */
 
-#include "fieldinfo.h"
-#include "number.h"
-#include "float.h"
-
 static FieldInfo *FLOAT_FieldInfo = NULL;
 static FieldInfo *INT_FieldInfo = NULL;
 

@@ -16,4 +16,5 @@ add_executable(lab1Buntsev main.c
         float.c
         float.h
         func.c
-        func.h)
+        func.h
+)

@@ -44,7 +44,7 @@ int main() {
                 char name[20];
                 printf("\nEnter int array name: ");
                 scanf("%19s", name);
-                arrayAddToCollection(&collection, name, sizeof(int), numberPrint);
+                arrayAddToCollection(&collection, name, GetIntFieldInfo());
                 break;
             }
             case 2: // Create new float array
@@ -52,7 +52,7 @@ int main() {
                 char name[20];
                 printf("\nEnter float array name: ");
                 scanf("%19s", name);
-                arrayAddToCollection(&collection, name, sizeof(float), floatPrint);
+                arrayAddToCollection(&collection, name, GetFloatFieldInfo());
                 break;
             }
             case 3: // Add element to int array
@@ -120,10 +120,24 @@ int main() {
                     printf("\nEnter the name of concatenated array: ");
                     scanf("%19s", res);
 
-                    arrayAddToCollection(&collection, res, sizeof(int), numberPrint);
-                    Array *resultarr = arrayFindInCollection(&collection, res);
+                    if (strcmp(firstarr->fieldinfo.typeName, "int") == 0 && strcmp(secondarr->fieldinfo.typeName, "int") == 0) {
+                        arrayAddToCollection(&collection, res, GetIntFieldInfo());
+                        Array *resultarr = arrayFindInCollection(&collection, res);
 
-                    arrayConcatenation(resultarr, firstarr, secondarr);
+                        arrayConcatenation(resultarr, firstarr, secondarr);
+                    } else if (strcmp(firstarr->fieldinfo.typeName, "float") == 0 && strcmp(secondarr->fieldinfo.typeName, "float") == 0) {
+                        arrayAddToCollection(&collection, res, GetFloatFieldInfo());
+                        Array *resultarr = arrayFindInCollection(&collection, res);
+
+                        arrayConcatenation(resultarr, firstarr, secondarr);
+                    } else{
+                        printf("\nDifferent types of arrays!\n");
+                    }
+
+//                    arrayAddToCollection(&collection, res, GetIntFieldInfo());
+//                   Array *resultarr = arrayFindInCollection(&collection, res);
+//
+//                    arrayConcatenation(resultarr, firstarr, secondarr);
                 } else {
                     printf("\nArrays are not found.\n");
                 }
@@ -171,7 +185,7 @@ int main() {
                 Array *arrSort = arrayFindInCollection(&collection, name);
 
                 if (arrSort) {
-                    arraySort(arrSort, numberSort);
+                    arraySort(arrSort, arrSort->fieldinfo.sortElement);
                 } else {
                     printf("\nArray not found.\n");
                 }

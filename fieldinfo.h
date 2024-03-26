@@ -9,15 +9,15 @@
 #include "number.h"
 #include "float.h"
 
-typedef void (*printArrayElement)(const void *element);
+typedef void (*PrintArrayElement)(const void *el);
 
-typedef int (*sortArrayElement)(void *element1, void *element2);
+typedef int (*SortArrayElement)(void *elem1, void *elem2);
 
 typedef struct {
     char *typeName;
     size_t elemSize;
-    printArrayElement printElement;
-    sortArrayElement sortElement;
+    PrintArrayElement printElement;
+    SortArrayElement sortElement;
 } FieldInfo;
 
 FieldInfo *GetIntFieldInfo();
